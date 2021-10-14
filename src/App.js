@@ -1,24 +1,51 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Header from './Pages/Shared/Header/Header';
+import Footer from './Pages/Shared/Footer/Footer';
+import Home from './Pages/Home/Home/Home';
+import Banner from './Pages/Home/Banner/Banner';
+import Foods from './Pages/Home/Foods/Foods';
+import Strategies from './Pages/Home/Strategies/Strategies';
+import NotFound from './Pages/NotFound/NotFound';
+import MealDetails from './Pages/Home/MealDetails/MealDetails';
+import SingleFood from './Pages/SingleFood/SingleFood';
+import Signin from './Pages/Signin/Signin';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <Router>
+     <Header></Header>
+<Switch>
+<Route exact path="/home">
+       <Home></Home>
+     </Route>
+<Route exact path="/">
+       <Home></Home>
+     </Route>
+<Route exact path="/banner">
+       <Banner></Banner>
+     </Route>
+<Route exact path="/foods">
+       <Foods></Foods>
+     </Route>
+<Route exact path="/strategies">
+       <Strategies></Strategies>
+     </Route>
+<Route exact path="/mealDetails">
+       <MealDetails></MealDetails>
+     </Route>
+<Route exact path="/singleFood/:foodId">
+       <SingleFood></SingleFood>
+     </Route>
+<Route exact path="/signin">
+       <Signin></Signin>
+     </Route>
+<Route exact path="*">
+       <NotFound></NotFound>
+     </Route>
+</Switch>
+<Footer></Footer>
+   </Router>
   );
 }
 
