@@ -9,11 +9,15 @@ import Strategies from './Pages/Home/Strategies/Strategies';
 import NotFound from './Pages/NotFound/NotFound';
 import MealDetails from './Pages/Home/MealDetails/MealDetails';
 import SingleFood from './Pages/SingleFood/SingleFood';
-import Signin from './Pages/Signin/Signin';
-
+import Login from './Pages/Login/Login/Login';
+import AuthProvider from './contexts/AuthProvider';
+import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
+import WhyUs from './Pages/Home/WhyUs/WhyUs';
+import UserInfo from './Pages/UserInfo/UserInfo';
 function App() {
   return (
-   <Router>
+   <AuthProvider>
+     <Router>
      <Header></Header>
 <Switch>
 <Route exact path="/home">
@@ -34,11 +38,17 @@ function App() {
 <Route exact path="/mealDetails">
        <MealDetails></MealDetails>
      </Route>
-<Route exact path="/singleFood/:foodId">
+<PrivateRoute exact path="/singleFood/:foodId">
        <SingleFood></SingleFood>
+     </PrivateRoute>
+<Route exact path="/login">
+       <Login></Login>
      </Route>
-<Route exact path="/signin">
-       <Signin></Signin>
+<Route exact path="/userinfo">
+       <UserInfo></UserInfo>
+     </Route>
+<Route exact path="/whyus">
+       <WhyUs></WhyUs>
      </Route>
 <Route exact path="*">
        <NotFound></NotFound>
@@ -46,6 +56,7 @@ function App() {
 </Switch>
 <Footer></Footer>
    </Router>
+   </AuthProvider>
   );
 }
 

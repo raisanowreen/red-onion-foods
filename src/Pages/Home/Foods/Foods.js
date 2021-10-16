@@ -11,7 +11,7 @@ const Foods = () => {
     },[]);
 
     return (
-        <div>
+             <div>
             <div class="row row-cols-1 row-cols-md-3 g-4 m-5 p-5">
             {
                 meals.map(meal => <MealDetails
@@ -20,8 +20,6 @@ const Foods = () => {
                 ></MealDetails>)
             }
             </div>
-          
-
         </div>
     );
 };
